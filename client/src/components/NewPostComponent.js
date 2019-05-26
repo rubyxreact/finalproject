@@ -1,11 +1,12 @@
 import React from 'react';
 
 const NewPostForm = ({onNewList = f => f}) => {
-    let title
+    let title, content
     const submit = e => {
         e.preventDefault()
-        onNewList(title.value)
+        onNewList(title.value, content.value)
         title.value = ''
+        content.value = ''
         title.focus()
     }
 
@@ -13,8 +14,11 @@ const NewPostForm = ({onNewList = f => f}) => {
         <form onSubmit={submit}>
             <input  ref={input => title = input}
                     type="text"
-                    placeholder="Title..." required />
-            <button>Ajouter un article</button>
+                    placeholder="Titre..." required />
+            <input  ref={input => content = input}
+                    type="text"
+                    placeholder="Contenu..." required />
+            <button>Add Post</button>
         </form>
     )
 }

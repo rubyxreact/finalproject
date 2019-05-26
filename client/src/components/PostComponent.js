@@ -23,8 +23,8 @@ class PostComponent extends Component {
         .catch(error => console.log(error))
     }
 
-    addNewPost(title, excerpt) {
-        axios.post( '/posts', { list: {title} })
+    addNewPost(title, content) {
+        axios.post( 'http://localhost:3001/posts', {title, content})
         .then(response => {
             console.log(response)
             const lists = [ ...this.state.lists, response.data ]
