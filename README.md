@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Blog CRUD React x Rails API.
 
-Things you may want to cover:
+Installation:
 
-* Ruby version
+* A la racine : rails server -p 3001 (garder ce port pour les appels api)
 
-* System dependencies
+* Dans le dossier /client : npm start
 
-* Configuration
+* Aller sur localhost:3000
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* ++
