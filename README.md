@@ -8,7 +8,9 @@ Installation:
 
 * bundle exec rake db:migrate
 
-* Dans le dossier /client : npm start
+* Dans le dossier /client : 
+npm i
+npm start
 
 * Aller sur localhost:3000
 
