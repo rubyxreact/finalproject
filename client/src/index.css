@@ -11,3 +11,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#root {
+  height: 100vh;
+}
+
+.List-container .single-list h4 {
+  margin-top: 0px;
+  padding-top: 5px;
+}
+
+.App header {
+  border-bottom: 3px solid red;
+  display: flex;
+}
+
+.menu {
+  
+  height: 65px;
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.menu a {
+  padding: 10px;
+  /* border: 1px solid black; */
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.5em;
+  color: black;
+
+}
+
+.menu a:hover {
+  color:red;
+}
+
+.logo {
+  width: 50%;
+  text-align: left;
+  height: 65px;
+  font-size: 3em;
+  padding-left: 10px;
+  float: left;
+}
+.logo span {
+  font-weight: bold;
+    color: red;
+}
