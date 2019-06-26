@@ -42,7 +42,7 @@ class PostComponent extends Component {
                     return (
                         <div className="single-list" key={list.id}>
                             <h4>{list.title}</h4>
-                            <p>{list.created_at}</p>
+                            <p>{list.content}</p>
                         </div>
                     )
                 })}
