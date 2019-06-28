@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
 
-    before_action :set_category, only: [:show, :update, :destroy, :get_comments]
+    before_action :set_category, only: [:show, :update, :destroy, :get_posts]
   
-    # GET /categories
+    # GET /category
     def index
       @categories = Category.all
       render json: @categories, status: :ok
@@ -13,13 +13,13 @@ class CategoriesController < ApplicationController
       render json: @category, status: :ok
     end
   
-    # POST /categories
+    # POST /category
     def create
-      @category = Category.new(category_params)
-      if @category.save
-        render json: @category, status: :created, location: @category
+      @categories = Category.new(category_params)
+      if @categories.save
+        render json: @categories, status: :created, location: @categories
       else
-        render json: @category.errors, status: :bad_request
+        render json: @categories.errors, status: :bad_request
       end
     end
   
@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
     end
   
     def category_params
-      params.permit(:title, :content)
+      params.permit(:name)
     end
   
     # GET /categories/:id/posts
