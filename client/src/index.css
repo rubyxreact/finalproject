@@ -32,6 +32,51 @@ code {
   display: flex;
   justify-content: flex-end;
   width: 50%;
+  margin-left:10%;
+  margin-top: -15px;
+}
+
+.firstmenu {
+
+  width:100%;
+  display: flex;
+  list-style-type: none;
+}
+
+.firstmenu li:hover .submenu {
+ display: block;
+  /* position: absolute; */
+  top:100%;
+  left:0;
+  padding: 0;
+  z-index: 10000;
+  background-color: red;
+   
+}
+
+.firstmenu li:hover .submenu li a {
+  color:white; 
+}
+
+.firstmenu li {
+  width: 215px;
+  margin-bottom: -25px;
+}
+
+.submenu {
+  display: initial;
+  list-style-type: none;
+  display: none;
+  
+  top:100%;
+  left:0;
+  padding: 0;
+  z-index: 10000;
+   
+}
+
+.submenu li a:first-child {
+  margin-top: -10px;
 }
 
 .menu a {
@@ -48,8 +93,9 @@ code {
 
 }
 
-.menu a:hover {
-  color:red;
+.firstmenu li:hover {
+  color:white;
+  background-color: red;
 }
 
 .logo {
