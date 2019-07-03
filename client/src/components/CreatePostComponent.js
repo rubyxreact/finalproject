@@ -1,7 +1,8 @@
 import React,{ Component } from "react";
 import axios from 'axios';
+import NewPostForm from './NewPostForm';
 
-class PostComponent extends Component {
+class CreatePostComponent extends Component {
 
     constructor(props){
         super(props)
@@ -10,17 +11,7 @@ class PostComponent extends Component {
         }
         this.addNewPost = this.addNewPost.bind(this)
     }
-    componentDidMount() {
-        
-        axios.get('http://localhost:3001/posts')
-        .then(response => {
-            console.log(response)
-            this.setState({
-                lists: response.data
-            })
-        })
-        .catch(error => console.log(error))
-    }
+
 
     addNewPost(title, content) {
         axios.post( 'http://localhost:3001/posts', {title, content})
@@ -37,18 +28,11 @@ class PostComponent extends Component {
     render() {
         return (
             <div className="List-container">
-              {this.state.lists.map( list => {
-                    return (
-                        <div className="single-list" key={list.id}>
-                            <h4>{list.title}</h4>
-                            <p>{list.content}</p>
-                        </div>
-                    )
-                })}
+                 <NewPostForm onNewList={this.addNewPost} />
             </div>
             
         )
     }
 }
 
-export default PostComponent;
+export default CreatePostComponent;

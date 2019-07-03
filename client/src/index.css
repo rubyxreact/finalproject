@@ -28,12 +28,13 @@ code {
 
 .menu {
   
-  height: 65px;
+  height: 80px;
   display: flex;
   justify-content: flex-end;
   width: 50%;
-  margin-left:10%;
   margin-top: -15px;
+  color:white;
+  background-color: black;
 }
 
 .firstmenu {
@@ -79,6 +80,9 @@ code {
   margin-top: -10px;
 }
 
+.submenu li a:hover {
+  text-decoration-line:underline;
+}
 .menu a {
   padding: 10px;
   /* border: 1px solid black; */
@@ -89,7 +93,7 @@ code {
   text-transform: uppercase;
   text-decoration: none;
   font-size: 1.5em;
-  color: black;
+  color: white;
 
 }
 
@@ -105,8 +109,35 @@ code {
   font-size: 3em;
   padding-left: 10px;
   float: left;
+  background-color: black;
+}
+
+.logo a {
+  text-decoration: none;
+    color: white;
 }
 .logo span {
+  font-weight: bold;
+    color: red;
+}
+
+.main-container {
+  height: 100vh;
+  text-align: center;
+}
+
+.image {
+  width: 1000px;
+}
+
+.logohome {
+  width: 100%;
+  height: 65px;
+  font-size: 3em;
+  padding-left: 10px;
+}
+
+.logohome span {
   font-weight: bold;
     color: red;
 }

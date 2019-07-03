@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
-import PostComponent from './components/PostComponent';
 import MenuComponent from './components/MenuComponent';
+import HomeComponent from './components/HomeComponent';
+
 
 function App() {
   return (
+    
     <div className="App">
     <MenuComponent />
-    <PostComponent />
+    <HomeComponent/>  
+   
   </div>
   );
 }
