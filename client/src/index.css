@@ -18,7 +18,66 @@ code {
 
 .List-container .single-list h4 {
   margin-top: 0px;
-  padding-top: 5px;
+  text-align: left;
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+.single-list p {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.single-list button {
+  outline: none;
+    border: none;
+    padding: 15px;
+    border-radius: 23px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 25px;
+    background-color: white;
+    cursor: pointer;
+    border:1px solid lightgray;
+}
+
+.createPost {
+  float: right;
+    padding: 8px;
+    outline: none;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-right: 25px;
+    text-transform: uppercase;
+    background: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.createPost:hover {
+  border:1px solid black;
+  color:black;
+  background-color: white;
+}
+.single-list button:hover {
+  color:white;
+  background-color: black;
+}
+
+.List-container h1 {
+  text-align: left;
+  padding-left: 25px;
+  margin-top: 40px;
+}
+
+
+.articleimage {
+  width: 592px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 }
 
 .App header {
@@ -75,6 +134,16 @@ code {
   z-index: 10000;
    
 }
+
+.single-list {
+  width: 31%;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  display: inline-block;
+  height: 500px;
+  margin: 20px;
+}
+
 
 .submenu li a:first-child {
   margin-top: -10px;
