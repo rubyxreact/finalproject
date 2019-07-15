@@ -1,6 +1,6 @@
 import React,{ Component } from "react";
 import axios from 'axios';
-import articleimage from '../articleimage.png';
+import List from "./List";
 
 
 class PostComponent extends Component {
@@ -9,9 +9,11 @@ class PostComponent extends Component {
         super(props)
         this.state = {
             lists: [],
-            article:[]
+            article:[],
+            toOnePost: false,
         }
         this.addNewPost = this.addNewPost.bind(this)
+        this.showPost = this.showPost.bind(this)
     }
     componentDidMount() {
         
@@ -38,17 +40,25 @@ class PostComponent extends Component {
         })
     }
 
-    showMore(id){
+    showPost(id) {
+        axios.get( "http://localhost:3001/posts/" + id )
+        .then(response => {
+            const lists = this.state.lists.filter(
+                list => list.id !== id
+            )
 
-        alert(id);
-        
+            this.setState({
+                article : response.data,
+                toOnePost: true
+            })
+            
+        })
+        .catch(error => console.log(error))
     }
 
-
-
     render() {
-        if(this.props.location.pathname === "/post/1"){
-            return " bien joué mec"
+        if(this.state.toOnePost === true){
+            return (   <List list={this.state.article} key={this.state.article.id} showById={this.showPost} />)
         } else {
             return (
                 <div className="List-container">
@@ -56,12 +66,7 @@ class PostComponent extends Component {
                 <h1> Voici la liste des articles : </h1>
                   {this.state.lists.map( list => {
                         return (
-                            <div className="single-list" key={list.id}>
-                                 <img className="articleimage" src={articleimage} alt="Logo" />
-                                <h4>{list.title}</h4>
-                                <p>{list.content}</p>
-                                <button type="submit" onClick={() => { this.showMore(list.id) }}>Voir plus</button>
-                            </div>
+                            <List list={list} key={list.id} showById={this.showPost} />
                         )
                     })}
                 </div>
