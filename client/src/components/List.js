@@ -5,7 +5,7 @@ const List = ({list, showById=f=>f}) =>
     <div className="single-list" key={list.id}>
     <img className="articleimage" src={articleimage} alt="Logo" />
         <h4>{list.title}</h4>
-        <p>{list.excerpt}</p>
+        <p>{list.content}</p>
         <button onClick={() => showById(list.id)}>Voir plus</button>
     </div>
 export default List;

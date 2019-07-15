@@ -23,6 +23,8 @@ module Blog
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    config.middleware.use ActionDispatch::Flash
+    
     config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
       allow do
         origins '*'
