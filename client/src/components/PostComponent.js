@@ -22,9 +22,14 @@ class PostComponent extends Component {
         this.editingList = this.editingList.bind(this)
         this.editList = this.editList.bind(this)
     }
+    
     componentDidMount() {
-        
-        axios.get('http://localhost:3001/posts')
+    
+        var config = {
+            headers: {'Authorization': "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE1NjMzMDU0ODR9.cvZIsjkB_rJi6J8Wc6ah9oYM56AoMyxCbKIdgQL5E1s"}
+        };
+
+        axios.get('http://localhost:3001/posts',config)
         .then(response => {
             console.log(response)
             this.setState({
@@ -53,7 +58,12 @@ class PostComponent extends Component {
     }
 
     showPost(id) {
-        axios.get( "http://localhost:3001/posts/" + id )
+
+        var config = {
+            headers: {'Authorization': "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE1NjMzMDU0ODR9.cvZIsjkB_rJi6J8Wc6ah9oYM56AoMyxCbKIdgQL5E1s"}
+        };
+        
+        axios.get( "http://localhost:3001/posts/" + id,config )
         .then(response => {
             const lists = this.state.lists.filter(
                 list => list.id !== id
