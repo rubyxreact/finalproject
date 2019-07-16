@@ -51,3 +51,11 @@ gem 'rack-cors'
 gem 'devise'
 
 gem 'simple_token_authentication', '~> 1.0'
+
+gem 'bcrypt', '~> 3.1.7'
+
+gem 'jwt'
+
+gem 'simple_command'
+
+gem 'bcrypt-ruby'
