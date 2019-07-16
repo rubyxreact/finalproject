@@ -2,6 +2,7 @@ import React,{ Component } from "react";
 import axios from 'axios';
 import List from "./List";
 import articleimage from '../articleimage.png';
+import EditListForm from "./EditLIstForm";
 
 
 class PostComponent extends Component {
@@ -12,10 +13,14 @@ class PostComponent extends Component {
             lists: [],
             article:[],
             toOnePost: false,
+            editArticle: false,
+            editingListId: null
         }
         this.addNewPost = this.addNewPost.bind(this)
         this.showPost = this.showPost.bind(this)
         this.removeList = this.removeList.bind(this)
+        this.editingList = this.editingList.bind(this)
+        this.editList = this.editList.bind(this)
     }
     componentDidMount() {
         
@@ -29,6 +34,11 @@ class PostComponent extends Component {
         .catch(error => console.log(error))
     }
 
+    editingList(id) {
+        this.setState({
+            editingListId: id
+        })
+    }
 
     addNewPost(title, content) {
         axios.post( 'http://localhost:3001/posts', {title, content})
@@ -74,6 +84,28 @@ class PostComponent extends Component {
         .catch(error => console.log(error))
     }
 
+    editList(id, title, content) {
+        axios.put( "http://localhost:3001/posts/"+ id, { 
+            list: {
+                title, 
+                content
+            } 
+        })
+        .then(response => {
+            console.log(response);
+            const lists = this.state.lists;
+            lists[id-1] = {id, title, content}
+            this.setState(() => ({
+                lists, 
+                editingListId: null,
+                editArticle:true,
+                article: response.data,
+                toOnePost:false
+            }))
+        })
+        .catch(error => console.log(error));
+    }
+
     render() {
         if(this.state.toOnePost === true){
             return (  
@@ -81,6 +113,7 @@ class PostComponent extends Component {
                 <div className="onearticle" key={this.state.article.id}>
                   <h4>{this.state.article.title}</h4>
                  <button onClick={() => this.removeList(this.state.article.id)} >Supprimer</button>
+                 <button  className="editButton" onClick={() => this.editingList(this.state.article.id)}>Editer</button>
                  <a href="/post" className="returnButton"> Retour</a>
                 <img  src={articleimage} alt="Logo" />
                   
@@ -91,17 +124,34 @@ class PostComponent extends Component {
 
                 </div>
                 )
+        } else if ( this.state.editingListId) {
+            return (
+                <div>
+
+                        <EditListForm 
+                        list={this.state.lists} 
+                        key={this.state.editingListId} 
+                        editList={this.editList} articleId={this.state.editingListId}
+                        />
+                        
+                    
+                    
+                </div>
+            )
         } else {
             return (
                 <div className="List-container">
                 <a href="/createPost" className="createPost"> Créer un article</a>
                 <h1> Voici la liste des articles : </h1>
-                  {this.state.lists.map( list => {
-                        return (
-                            <List list={list} key={list.id} showById={this.showPost} />
+                  {this.state.lists.map( (list) => { 
+
+                       return (
+                            <List list={list} key={list.id} showById={this.showPost} editingArticle={this.editingList} />
                         )
+                    
                     })}
                 </div>
+
                 
             )
         }

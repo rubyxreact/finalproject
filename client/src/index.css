@@ -72,7 +72,11 @@ code {
   padding-left: 15px;
   padding-right: 15px;
   margin-top: -97px;
-  margin-right: 197px;
+  margin-right: 275px;
+}
+.editButton {
+  margin-right: 180px !important;
+  background-color: orange !important;
 }
 
 .createPost:hover {
