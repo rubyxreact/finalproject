@@ -23,11 +23,23 @@ module Blog
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    config.middleware.use ActionDispatch::Flash
+    
+    
     config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
       allow do
         origins '*'
         resource '*', headers: :any, methods: :any
       end  
+    end
+
+    config.eager_load_paths << Rails.root.join('lib')
+
+    #autoloads lib folder during development
+    config.autoload_paths << Rails.root.join('lib')
+
+    config.to_prepare do
+      DeviseController.respond_to :html, :json
     end
 
     # Settings in config/environments/* take precedence over those specified here.

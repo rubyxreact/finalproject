@@ -8,18 +8,24 @@ const NewPostForm = ({onNewList = f => f}) => {
         title.value = ''
         content.value = ''
         title.focus()
+        alert("Vous avez créer un article !")
     }
 
     return (
+        <div className="form-style-5" >
         <form onSubmit={submit}>
+        <fieldset>
+        <legend> Créer un article</legend>
             <input  ref={input => title = input}
                     type="text"
                     placeholder="Titre..." required />
-            <input  ref={input => content = input}
+            <textarea  ref={input => content = input}
                     type="text"
-                    placeholder="Contenu..." required />
-            <button>Add Post</button>
+                    placeholder="Contenu..." required ></textarea>
+        </fieldset>
+            <button>Créer</button>
         </form>
+        </div>
     )
 }
 
