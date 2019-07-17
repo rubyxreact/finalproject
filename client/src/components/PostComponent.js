@@ -5,6 +5,10 @@ import articleimage from '../articleimage.png';
 import EditListForm from "./EditLIstForm";
 
 
+var config = {
+    headers: {'Authorization': "Bearer " + localStorage.getItem("token")}
+};
+
 class PostComponent extends Component {
 
     constructor(props){
@@ -25,10 +29,7 @@ class PostComponent extends Component {
     
     
     componentDidMount() {
-    
-        var config = {
-            headers: {'Authorization': "Bearer " + localStorage.getItem("token")}
-        };
+
 
         axios.get('http://localhost:3001/posts',config)
         .then(response => {
@@ -60,13 +61,10 @@ class PostComponent extends Component {
 
     showPost(id) {
 
-        var config = {
-            headers: {'Authorization': "Bearer " + localStorage.getItem("token")}
-        };
 
         axios.get( "http://localhost:3001/posts/" + id,config )
         .then(response => {
-            const lists = this.state.lists.filter(
+            this.state.lists.filter(
                 list => list.id !== id
             )
 
@@ -81,7 +79,7 @@ class PostComponent extends Component {
 
 
     removeList(id) {
-        axios.delete( 'http://localhost:3001/posts/' + id )
+        axios.delete( 'http://localhost:3001/posts/' + id ,config)
         .then(response => {
             const lists = this.state.lists.filter(
                 list => list.id !== id
@@ -101,7 +99,7 @@ class PostComponent extends Component {
                 title, 
                 content
             } 
-        })
+        },config)
         .then(response => {
             console.log(response);
             const lists = this.state.lists;
@@ -125,7 +123,7 @@ class PostComponent extends Component {
                   <h4>{this.state.article.title}</h4>
                  <button onClick={() => this.removeList(this.state.article.id)} >Supprimer</button>
                  <button  className="editButton" onClick={() => this.editingList(this.state.article.id)}>Editer</button>
-                 <a href="/post" className="returnButton"> Retour</a>
+                 <a href="/app/post" className="returnButton"> Retour</a>
                 <img  src={articleimage} alt="Logo" />
                   
                     <p className="pcontenu">{this.state.article.content}</p>
@@ -152,7 +150,7 @@ class PostComponent extends Component {
         } else {
             return (
                 <div className="List-container">
-                <a href="/createPost" className="createPost"> Créer un article</a>
+                <a href="/app/createPost" className="createPost"> Créer un article</a>
                 <h1> Voici la liste des articles : </h1>
                   {this.state.lists.map( (list) => { 
 

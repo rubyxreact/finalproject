@@ -2,12 +2,11 @@ import React,{ Component } from "react";
 import axios from 'axios';
 import logo from '../RubyXReact.png';
 
-
 const marge = {
     marginTop:45
   };
 
-class LoginComponent extends Component {
+class RegisterComponent extends Component {
 
     constructor(props){
         super(props);
@@ -17,17 +16,16 @@ class LoginComponent extends Component {
         }
     }
 
-    login = (e) => {
+    register = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:3001/auth/login", {
+        axios.post("http://localhost:3001/auth/register", {
               email: this.state.email,
               password: this.state.password
             
           })
           .then(response => {
-            localStorage.setItem("token",response.data.access_token);
             this.props.history.push("/app");
-
+            alert(response.data.message);
           })
           .catch((error) => {
             console.log(error)
@@ -35,26 +33,25 @@ class LoginComponent extends Component {
     }
 
 
-
-
     render() {
         return (
-    <div>
+       <div>
             <img className="image-connect" src={logo} alt="Logo" />
         <div className="form-style-5" style={marge} >
-            <form onSubmit={this.login}>
+            <form onSubmit={this.register}>
             <fieldset>
-            <legend> Connexion</legend>
+            <legend> Inscription</legend>
             <input type="text" placeholder="email" onChange={e => this.setState({ email: e.target.value })}/>
             <input type="password" placeholder="Mot de passe" onChange={e => this.setState({password: e.target.value })}/>
             </fieldset>
-            <button>Se connecter</button>
-            </form>
-            <p> Vous n'avez pas de compte? <a href="/register">Inscrivez-vous ici.</a></p>   
+            <button>S'inscrire</button>
+            </form> 
+            <p> Vous avez déjà un compte? <a href="/login">Connectez-vous ici.</a></p>    
         </div>
-    </div>    
+       </div>
+            
         )
     }
 }
 
-export default LoginComponent;
+export default RegisterComponent;

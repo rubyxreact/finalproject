@@ -2,6 +2,12 @@ import React,{ Component } from "react";
 import axios from 'axios';
 import NewPostForm from './NewPostForm';
 
+
+var config = {
+    headers: {'Authorization': "Bearer " + localStorage.getItem("token")}
+};
+
+
 class CreatePostComponent extends Component {
 
     constructor(props){
@@ -14,7 +20,7 @@ class CreatePostComponent extends Component {
 
 
     addNewPost(title, content) {
-        axios.post( 'http://localhost:3001/posts', {title, content})
+        axios.post( 'http://localhost:3001/posts', {title, content},config)
         .then(response => {
             console.log(response)
             const lists = [ ...this.state.lists, response.data ]

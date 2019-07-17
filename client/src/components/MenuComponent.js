@@ -25,21 +25,26 @@ class MenuComponent extends Component {
         .catch(error => console.log(error))
     }
 
+    logOut() {
+        localStorage.removeItem("token");
+        window.location.reload()
+    }
+
     render() {
         return (
 
             <header>
             <div className="logo">
             
-            <a href="/">ruby<span>x</span>react</a>
+            <a href="/app">ruby<span>x</span>react</a>
             </div>
             <div className="menu">
                 <ul className="firstmenu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/post">Articles</a></li>
-                    <li> <a href="/categories">Catégories</a></li>
-                    <li><a href="/">Compte</a></li>
-                    <li><a href="/">Déconnexion</a></li>
+                    <li><a href="/app">Home</a></li>
+                    <li><a href="/app/post">Articles</a></li>
+                    <li> <a href="/app/categories">Catégories</a></li>
+                    <li><a href="/app">Compte</a></li>
+                    <li><a href="/app" onClick={this.logOut}>Déconnexion</a></li>
                 </ul>           
             </div>
           </header>
