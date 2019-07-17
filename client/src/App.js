@@ -5,6 +5,7 @@ import HomeComponent from './components/HomeComponent';
 import { Route } from "react-router-dom";
 import PostComponent from "./components/PostComponent";
 import CreatePostComponent from './components/CreatePostComponent';
+import LoginComponent from './components/LoginComponent';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
     <MenuComponent />
      <Route exact path="/" component={HomeComponent} /> 
+     <Route exact path="/login" component={LoginComponent} /> 
      <Route path="/post" component={PostComponent} />
      <Route exact path="/createPost" component={CreatePostComponent} />
   </div>

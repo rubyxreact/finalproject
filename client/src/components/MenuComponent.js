@@ -10,8 +10,12 @@ class MenuComponent extends Component {
         }
     }
     componentDidMount() {
+
+        var config = {
+            headers: {'Authorization': "Bearer " + this.props.jwt}
+        };
         
-        axios.get('http://localhost:3001/categories')
+        axios.get('http://localhost:3001/categories',config)
         .then(response => {
             console.log(response)
             this.setState({
