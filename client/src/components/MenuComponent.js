@@ -12,7 +12,7 @@ class MenuComponent extends Component {
     componentDidMount() {
 
         var config = {
-            headers: {'Authorization': "Bearer " + this.props.jwt}
+            headers: {'Authorization': "Bearer " + localStorage.getItem("token")}
         };
         
         axios.get('http://localhost:3001/categories',config)

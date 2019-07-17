@@ -13,14 +13,16 @@ class LoginComponent extends Component {
         }
     }
 
-    login = () => {
+    login = (e) => {
+        e.preventDefault()
         axios.post("http://localhost:3001/auth/login", {
-            user: {
               email: this.state.email,
               password: this.state.password
-            }
+            
           })
-          .then(res => console.log(res.data))
+          .then(response => {
+            localStorage.setItem("token",response.data.access_token);
+          })
           .catch((error) => {
             console.log(error)
           });

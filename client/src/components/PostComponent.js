@@ -27,7 +27,7 @@ class PostComponent extends Component {
     componentDidMount() {
     
         var config = {
-            headers: {'Authorization': "Bearer " + this.props.jwt}
+            headers: {'Authorization': "Bearer " + localStorage.getItem("token")}
         };
 
         axios.get('http://localhost:3001/posts',config)
@@ -61,7 +61,7 @@ class PostComponent extends Component {
     showPost(id) {
 
         var config = {
-            headers: {'Authorization': "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE1NjMzMDU0ODR9.cvZIsjkB_rJi6J8Wc6ah9oYM56AoMyxCbKIdgQL5E1s"}
+            headers: {'Authorization': "Bearer " + localStorage.getItem("token")}
         };
 
         axios.get( "http://localhost:3001/posts/" + id,config )
