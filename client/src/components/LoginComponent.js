@@ -8,23 +8,12 @@ class LoginComponent extends Component {
     constructor(props){
         super(props)
         this.state = {
-            lists: [],
-            jwt: '',
+            lists: []
         }
         this.login = this.login.bind(this)
-        this.newJWT = this.newJWT.bind(this);
     }
 
-  
-    newJWT(jwt){
-        this.setState({
-          jwt: jwt
-        });
-    }
-
-    login(){
-        var email = this.email;
-        var password = this.password;
+    login(email,password){
         axios.post("http://localhost:3001/auth/login",{
             user: {
               email: email,
@@ -33,8 +22,6 @@ class LoginComponent extends Component {
           },)
           .then((response) => {
               console.log(response);
-            deviceStorage.saveKey("id_token", response.data.jwt);
-            this.props.newJWT(response.data.jwt);
           })
           .catch((error) => {
             console.log(error)
