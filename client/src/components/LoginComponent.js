@@ -6,23 +6,21 @@ import deviceStorage from "../services/deviceStorage";
 class LoginComponent extends Component {
 
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
-            lists: []
+            email: '',
+            password: ''
         }
-        this.login = this.login.bind(this)
     }
 
-    login(email,password){
-        axios.post("http://localhost:3001/auth/login",{
+    login(){
+        axios.post("http://localhost:3001/auth/login", {
             user: {
-              email: email,
-              password: password
+              email: this.state.email,
+              password: this.state.password
             }
-          },)
-          .then((response) => {
-              console.log(response);
           })
+          .then(res => console.log(res.data))
           .catch((error) => {
             console.log(error)
           });
@@ -32,16 +30,16 @@ class LoginComponent extends Component {
     render() {
         return (
            <div>
-               <form>
+               <form onSubmit={this.login}>
                <div>
                <label> email :</label>
-               <input ref={(c) => this.email = c} type="text" placeholder="email"/> 
+               <input type="text" placeholder="email" onChange={e => this.setState({ email: e.target.value })}/>
                </div>             
                <div>
                <label> mot de passe :</label>
-               <input ref={(c) => this.password = c} type="password" placeholder="Mot de passe"/>
+               <input type="password" placeholder="Mot de passe" onChange={e => this.setState({password: e.target.value })}/>
                </div> 
-               <button onClick={() => this.login()}>Se connecter</button>     
+               <button>Se connecter</button>     
                </form>       
            </div>
             
