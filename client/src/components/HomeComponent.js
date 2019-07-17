@@ -13,7 +13,7 @@ class HomeComponent extends Component {
 
     render() {
         return (
-           <div class="main-container">
+           <div className="main-container">
 
                 <img className="image" src={logo} alt="Logo" />
                 <div className="logohome">
