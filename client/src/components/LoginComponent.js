@@ -13,7 +13,7 @@ class LoginComponent extends Component {
         }
     }
 
-    login(){
+    login = () => {
         axios.post("http://localhost:3001/auth/login", {
             user: {
               email: this.state.email,
