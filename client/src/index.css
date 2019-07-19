@@ -205,7 +205,7 @@ code {
   border: 2px solid lightgray;
   border-radius: 10px;
   display: inline-block;
-  height: 500px;
+  height: 510px;
   margin: 20px;
 }
 
@@ -262,6 +262,15 @@ code {
 
 .image {
   width: 1000px;
+}
+
+.connected {
+  width: 37%;
+    padding-top: 24px;
+    font-size: 1.1em;
+    color: white;
+    background-color: black;
+    margin: 0;
 }
 
 .image-connect {

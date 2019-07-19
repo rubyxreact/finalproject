@@ -46,7 +46,7 @@ const NewPostForm = ({onNewList = f => f, stateCategories}) => {
             {categories.map( (category) => { 
 
             return (
-                <option ref={input => category_id = input} value={category.id}>{category.name}</option>
+                <option ref={option => category_id = option} value={category.id}>{category.name}</option>
             )
 
             })}

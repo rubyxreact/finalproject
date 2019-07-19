@@ -37,7 +37,9 @@ class MenuComponent extends Component {
             <div className="logo">
             
             <a href="/app">ruby<span>x</span>react</a>
-            </div>
+           
+            </div> 
+            <p className="connected"> Bonjour, {localStorage.getItem("email")}</p>
             <div className="menu">
                 <ul className="firstmenu">
                     <li><a href="/app">Home</a></li>

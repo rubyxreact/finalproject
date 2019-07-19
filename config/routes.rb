@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'posts/:id/comments', to: 'posts#get_comments'
 
+  get 'categories/:id/posts', to: 'categories#get_posts'
+
   post 'auth/register', to: 'users#register'
 
   post 'auth/login', to: 'users#login'
