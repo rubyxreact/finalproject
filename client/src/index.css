@@ -269,6 +269,10 @@ code {
   margin-left: 34%;
 }
 
+.selectSize {
+  height: 40px !important;
+}
+
 .hideUser {
   display: none;
 }

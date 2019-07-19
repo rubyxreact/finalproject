@@ -1,10 +1,29 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 
-const NewPostForm = ({onNewList = f => f}) => {
-    let title, content, author
+
+
+var config = {
+    headers: {'Authorization': "Bearer " + localStorage.getItem("token")}
+};
+
+const NewPostForm = ({onNewList = f => f, stateCategories}) => {
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect( () => {
+        axios.get('http://localhost:3001/categories',config)
+        .then(response => {
+            console.log(response)
+            setCategories(response.data)
+        })
+        .catch(error => console.log(error))
+    } , [])
+
+    let title, content, author, category_id
     const submit = e => {
         e.preventDefault()
-        onNewList(title.value, content.value, author.value)
+        onNewList(title.value, content.value, author.value, category_id.value)
         title.value = ''
         content.value = ''
         title.focus()
@@ -23,6 +42,15 @@ const NewPostForm = ({onNewList = f => f}) => {
             <textarea  ref={input => content = input}
                     type="text"
                     placeholder="Contenu..." required ></textarea>
+            <select className="selectSize">
+            {categories.map( (category) => { 
+
+            return (
+                <option ref={input => category_id = input} value={category.id}>{category.name}</option>
+            )
+
+            })}
+            </select>
         </fieldset>
             <button>Créer</button>
         </form>

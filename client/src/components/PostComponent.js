@@ -131,6 +131,7 @@ class PostComponent extends Component {
                     <p>Mis à jour le : {this.state.article.updated_at.substring(0,10).replace(/(\d{4})-(\d{2})-(\d{2})/g, '$3/$2/$1')}</p>
                     <p>Nombre de commentaires : {this.state.article.nb_comments}</p>
                     <p>Auteur : <b> {this.state.article.author}</b></p>
+                    <p> Catégorie : {this.state.article.category_id}</p>
 
                 </div>
                 )

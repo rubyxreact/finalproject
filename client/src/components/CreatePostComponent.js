@@ -13,14 +13,15 @@ class CreatePostComponent extends Component {
     constructor(props){
         super(props)
         this.state = {
-            lists: []
+            lists: [],
+            categories:[]
         }
         this.addNewPost = this.addNewPost.bind(this)
     }
 
 
-    addNewPost(title, content, author) {
-        axios.post( 'http://localhost:3001/posts', {title, content, author},config)
+    addNewPost(title, content, author, category_id) {
+        axios.post( 'http://localhost:3001/posts', {title, content, author, category_id},config)
         .then(response => {
             console.log(response)
             const lists = [ ...this.state.lists, response.data ]
@@ -34,7 +35,7 @@ class CreatePostComponent extends Component {
     render() {
         return (
             <div className="List-container">
-                 <NewPostForm onNewList={this.addNewPost} />
+                 <NewPostForm onNewList={this.addNewPost} categories={this.getCategories} stateCategories={this.state.categories} />
             </div>
             
         )

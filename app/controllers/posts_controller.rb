@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.permit(:title, :content,:author)
+    params.permit(:title, :content,:author,:category_id)
   end
 
   # GET /posts/:id/comments
