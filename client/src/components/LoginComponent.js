@@ -25,6 +25,7 @@ class LoginComponent extends Component {
             
           })
           .then(response => {
+            localStorage.setItem("email", this.state.email);
             localStorage.setItem("token",response.data.access_token);
             this.props.history.push("/app");
 

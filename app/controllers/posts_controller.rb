@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      render json: @post, status: :created, location: @post
+      render json: @post_params, status: :created, location: @post
     else
       render json: @post.errors, status: :bad_request
     end
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.permit(:title, :content)
+    params.permit(:title, :content,:author)
   end
 
   # GET /posts/:id/comments

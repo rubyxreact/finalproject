@@ -19,8 +19,8 @@ class CreatePostComponent extends Component {
     }
 
 
-    addNewPost(title, content) {
-        axios.post( 'http://localhost:3001/posts', {title, content},config)
+    addNewPost(title, content, author) {
+        axios.post( 'http://localhost:3001/posts', {title, content, author},config)
         .then(response => {
             console.log(response)
             const lists = [ ...this.state.lists, response.data ]
