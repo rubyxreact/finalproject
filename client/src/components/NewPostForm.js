@@ -42,11 +42,11 @@ const NewPostForm = ({onNewList = f => f, stateCategories}) => {
             <textarea  ref={input => content = input}
                     type="text"
                     placeholder="Contenu..." required ></textarea>
-            <select className="selectSize">
+            <select ref={select => category_id = select} className="selectSize">
             {categories.map( (category) => { 
 
             return (
-                <option ref={option => category_id = option} value={category.id}>{category.name}</option>
+                <option  value={category.id}>{category.name}</option>
             )
 
             })}
